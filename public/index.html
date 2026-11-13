@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эмулятор МТ1804</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="left-panel">
+      <div class="side-switch-group">
+        <span class="label">Синхронизация<br>(SA13)</span>
+        <div class="toggle-group">
+          <button id="sa13-step" class="toggle active">ШАГ</button>
+          <button id="sa13-auto" class="toggle">АВТОМАТ</button>
+        </div>
+      </div>
+      <div class="side-switch-group">
+        <span class="label">Генератор<br>(SA14)</span>
+        <div class="toggle-group">
+          <button id="sa14-int" class="toggle active">ВНУТР.</button>
+          <button id="sa14-ext" class="toggle">ВНЕШН.</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-panel">
+      <div class="table-wrapper">
+        <table id="memory-table">
+          <thead>
+            <tr>
+              <th>Адрес ПМК</th>
+              <th>Тетр. 0 (D)</th>
+              <th>Тетр. 1 (B)</th>
+              <th>Тетр. 2 (A)</th>
+              <th>Тетр. 3 (C0, I5-3)</th>
+              <th>Тетр. 4 (S0, I2-0)</th>
+              <th>Тетр. 5 (S1, I8-6)</th>
+              <th>Тетр. 6 (P3-0)</th>
+              <th>Тетр. 7 (R3-0)</th>
+              <th>Действие</th>
+            </tr>
+          </thead>
+          <tbody id="memory-body"></tbody>
+        </table>
+      </div>
+
+      <div class="led-panel">
+        <div class="led-block">
+          <span class="led-label">Данные</span>
+          <div class="led-group">
+            <div class="led" id="led-data-3"></div>
+            <div class="led" id="led-data-2"></div>
+            <div class="led" id="led-data-1"></div>
+            <div class="led" id="led-data-0"></div>
+          </div>
+        </div>
+        <div class="led-block">
+          <span class="led-label">Микрокоманда</span>
+          <div class="led-group">
+            <div class="led" id="led-mc-3"></div>
+            <div class="led" id="led-mc-2"></div>
+            <div class="led" id="led-mc-1"></div>
+            <div class="led" id="led-mc-0"></div>
+          </div>
+        </div>
+        <div class="led-block">
+          <span class="led-label">Память</span>
+          <div class="led-group">
+            <div class="led" id="led-mem-3"></div>
+            <div class="led" id="led-mem-2"></div>
+            <div class="led" id="led-mem-1"></div>
+            <div class="led" id="led-mem-0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-panel">
+    <div class="control-item">
+      <span class="label">Режим (SA12)</span>
+      <div class="toggle-group">
+        <button id="sa12-load" class="toggle active">ЗАГРУЗКА</button>
+        <button id="sa12-run" class="toggle">РАБОТА</button>
+      </div>
+    </div>
+    <div class="control-item">
+      <span class="label">Пуск (SB2)</span>
+      <button id="btn-start" class="btn btn-primary">ПУСК</button>
+    </div>
+    <div class="control-item">
+      <span class="label">Адрес (SA8-SA11)</span>
+      <div class="switches">
+        <label>8<input type="checkbox" id="sa11"></label>
+        <label>4<input type="checkbox" id="sa10"></label>
+        <label>2<input type="checkbox" id="sa9"></label>
+        <label>1<input type="checkbox" id="sa8"></label>
+      </div>
+    </div>
+    <div class="control-item">
+      <span class="label">Данные (SA4-SA7)</span>
+      <div class="switches">
+        <label>8<input type="checkbox" id="sa7"></label>
+        <label>4<input type="checkbox" id="sa6"></label>
+        <label>2<input type="checkbox" id="sa5"></label>
+        <label>1<input type="checkbox" id="sa4"></label>
+      </div>
+    </div>
+    <div class="control-item">
+      <span class="label">Мультиплексор (SA1-SA3)</span>
+      <div class="switches">
+        <label>4<input type="checkbox" id="sa3"></label>
+        <label>2<input type="checkbox" id="sa2"></label>
+        <label>1<input type="checkbox" id="sa1"></label>
+      </div>
+    </div>
+    <div class="control-item">
+      <span class="label">Запись (SB1)</span>
+      <button id="btn-load" class="btn btn-success">ЗАГРУЗИТЬ</button>
+    </div>
+    <div class="control-item">
+      <button id="btn-demo" class="btn btn-secondary">Демо</button>
+      <button id="btn-reset" class="btn btn-danger">Сброс</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
